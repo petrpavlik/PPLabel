@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <CoreText/CoreText.h>
 
 @implementation AppDelegate
 

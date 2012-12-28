@@ -18,6 +18,8 @@
 		4B8D0DA7168E2506009D3F22 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B8D0DA6168E2506009D3F22 /* Default-568h@2x.png */; };
 		4B8D0DAA168E2506009D3F22 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B8D0DA8168E2506009D3F22 /* MainStoryboard.storyboard */; };
 		4B8D0DAD168E2506009D3F22 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8D0DAC168E2506009D3F22 /* ViewController.m */; };
+		4B8D0DB5168E2557009D3F22 /* PPLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8D0DB4168E2557009D3F22 /* PPLabel.m */; };
+		4B8D0DB7168E2721009D3F22 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B8D0DB6168E2721009D3F22 /* CoreText.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,9 @@
 		4B8D0DA9168E2506009D3F22 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		4B8D0DAB168E2506009D3F22 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		4B8D0DAC168E2506009D3F22 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		4B8D0DB3168E2557009D3F22 /* PPLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLabel.h; sourceTree = "<group>"; };
+		4B8D0DB4168E2557009D3F22 /* PPLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLabel.m; sourceTree = "<group>"; };
+		4B8D0DB6168E2721009D3F22 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B8D0DB7168E2721009D3F22 /* CoreText.framework in Frameworks */,
 				4B8D0D91168E2506009D3F22 /* UIKit.framework in Frameworks */,
 				4B8D0D93168E2506009D3F22 /* Foundation.framework in Frameworks */,
 				4B8D0D95168E2506009D3F22 /* CoreGraphics.framework in Frameworks */,
@@ -73,6 +79,7 @@
 		4B8D0D8F168E2506009D3F22 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4B8D0DB6168E2721009D3F22 /* CoreText.framework */,
 				4B8D0D90168E2506009D3F22 /* UIKit.framework */,
 				4B8D0D92168E2506009D3F22 /* Foundation.framework */,
 				4B8D0D94168E2506009D3F22 /* CoreGraphics.framework */,
@@ -83,6 +90,8 @@
 		4B8D0D96168E2506009D3F22 /* PPLabel */ = {
 			isa = PBXGroup;
 			children = (
+				4B8D0DB3168E2557009D3F22 /* PPLabel.h */,
+				4B8D0DB4168E2557009D3F22 /* PPLabel.m */,
 				4B8D0D9F168E2506009D3F22 /* AppDelegate.h */,
 				4B8D0DA0168E2506009D3F22 /* AppDelegate.m */,
 				4B8D0DA8168E2506009D3F22 /* MainStoryboard.storyboard */,
@@ -176,6 +185,7 @@
 				4B8D0D9D168E2506009D3F22 /* main.m in Sources */,
 				4B8D0DA1168E2506009D3F22 /* AppDelegate.m in Sources */,
 				4B8D0DAD168E2506009D3F22 /* ViewController.m in Sources */,
+				4B8D0DB5168E2557009D3F22 /* PPLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

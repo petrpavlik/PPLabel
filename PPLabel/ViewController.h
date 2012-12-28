@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PPLabel.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <PPLabelDelegate>
+
+@property (weak, nonatomic) IBOutlet PPLabel *label;
 
 @end
