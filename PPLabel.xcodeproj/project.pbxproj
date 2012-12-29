@@ -302,6 +302,7 @@
 				4B8D0DB2168E2506009D3F22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

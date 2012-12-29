@@ -50,12 +50,30 @@
 
 - (void)highlightWordContainingCharacterAtIndex:(CFIndex)charIndex {
     
+    if (charIndex==NSNotFound) {
+        [self removeHighlight];
+        return;
+    }
+    
     NSString* string = self.label.text;
     
     NSRange end = [string rangeOfString:@" " options:0 range:NSMakeRange(charIndex, string.length - charIndex)];
-    NSRange front = [string rangeOfString:@" " options:NSBackwardsSearch range:NSMakeRange(0, charIndex+1)];
+    NSRange front = [string rangeOfString:@" " options:NSBackwardsSearch range:NSMakeRange(0, charIndex)];
+    
+    if (front.location == NSNotFound) {
+        front.location = 0;
+    }
+    
+    if (end.location == NSNotFound) {
+        end.location = string.length-1;
+    }
     
     NSRange wordRange = NSMakeRange(front.location, end.location-front.location);
+    
+    if (front.location!=0) {
+        wordRange.location += 1;
+        wordRange.length -= 1;
+    }
     
     if (wordRange.location == self.highlightedRange.location) {
         return;
@@ -67,7 +85,7 @@
     self.highlightedRange = wordRange;
     
     NSMutableAttributedString* attributedString = [self.label.attributedText mutableCopy];
-    [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:wordRange];
+    [attributedString addAttribute:NSBackgroundColorAttributeName value:[UIColor redColor] range:wordRange];
     self.label.attributedText = attributedString;
 }
 
@@ -76,8 +94,10 @@
     if (self.highlightedRange.location != NSNotFound) {
         
         NSMutableAttributedString* attributedString = [self.label.attributedText mutableCopy];
-        [attributedString removeAttribute:NSForegroundColorAttributeName range:self.highlightedRange];
+        [attributedString removeAttribute:NSBackgroundColorAttributeName range:self.highlightedRange];
         self.label.attributedText = attributedString;
+        
+        self.highlightedRange = NSMakeRange(NSNotFound, 0);
     }
 }
 

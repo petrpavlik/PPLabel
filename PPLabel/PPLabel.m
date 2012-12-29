@@ -19,9 +19,9 @@
     
     ////////
     
-    NSMutableAttributedString* renderedAttributedText = [self.attributedText mutableCopy];
+    NSMutableAttributedString* optimizedAttributedText = [self.attributedText mutableCopy];
     
-    [self.attributedText enumerateAttribute:(NSString*)kCTParagraphStyleAttributeName inRange:NSMakeRange(0, [renderedAttributedText length]) options:0 usingBlock:^(id value, NSRange range, BOOL *stop) {
+    [self.attributedText enumerateAttribute:(NSString*)kCTParagraphStyleAttributeName inRange:NSMakeRange(0, [optimizedAttributedText length]) options:0 usingBlock:^(id value, NSRange range, BOOL *stop) {
 
         NSMutableParagraphStyle* paragraphStyle = [value mutableCopy];
         
@@ -29,8 +29,8 @@
             [paragraphStyle setLineBreakMode:kCTLineBreakByWordWrapping];
         }
         
-        [renderedAttributedText removeAttribute:(NSString*)kCTParagraphStyleAttributeName range:range];
-        [renderedAttributedText addAttribute:(NSString*)kCTParagraphStyleAttributeName value:paragraphStyle range:range];
+        [optimizedAttributedText removeAttribute:(NSString*)kCTParagraphStyleAttributeName range:range];
+        [optimizedAttributedText addAttribute:(NSString*)kCTParagraphStyleAttributeName value:paragraphStyle range:range];
         
     }];
     
@@ -53,7 +53,7 @@
     
     //////
     
-    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)renderedAttributedText);
+    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)optimizedAttributedText);
     
     CGMutablePathRef path = CGPathCreateMutable();
     CGPathAddRect(path, NULL, textRect);
@@ -119,6 +119,8 @@
     return idx;
 }
 
+#pragma mark --
+
 - (CGRect)textRect {
     
     CGRect textRect = [self textRectForBounds:self.bounds limitedToNumberOfLines:self.numberOfLines];
@@ -142,11 +144,7 @@
     UITouch *touch = [touches anyObject];
     CFIndex index = [self characterIndexAtPoint:[touch locationInView:self]];
     
-    if (index != NSNotFound) {
-     
-         NSLog(@"clicked on char with index %ld", index);
-        [self.delegate label:self didBeginTouch:touch onCharacterAtIndex:index];
-    }
+    [self.delegate label:self didBeginTouch:touch onCharacterAtIndex:index];
     
     [super touchesBegan:touches withEvent:event];
 }
@@ -156,10 +154,7 @@
     UITouch *touch = [touches anyObject];
     CFIndex index = [self characterIndexAtPoint:[touch locationInView:self]];
     
-    if (index != NSNotFound) {
-        
-        [self.delegate label:self didMoveTouch:touch onCharacterAtIndex:index];
-    }
+    [self.delegate label:self didMoveTouch:touch onCharacterAtIndex:index];
     
     [super touchesMoved:touches withEvent:event];
 }
@@ -169,10 +164,7 @@
     UITouch *touch = [touches anyObject];
     CFIndex index = [self characterIndexAtPoint:[touch locationInView:self]];
     
-    if (index != NSNotFound) {
-        
-        [self.delegate label:self didEndTouch:touch onCharacterAtIndex:index];
-    }
+    [self.delegate label:self didEndTouch:touch onCharacterAtIndex:index];
     
     [super touchesEnded:touches withEvent:event];
 }
