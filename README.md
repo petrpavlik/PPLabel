@@ -3,6 +3,8 @@
 ---
 The advantage os this implementation is that it uses the ability of UILabel to display NSAttributedString on iOS 6.0+. There is no hacking of the drawRect: or drawText: method of UILabel.
 
+**PPLabel requires iOS 6+**
+
 ## Getting Started
 
 - Obtain the last version of PPLabel from the master branch (or the dev branch if you dare).
