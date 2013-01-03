@@ -48,8 +48,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="weu-eL-HFY" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="S1S-6g-bOz"/>
+                            <constraint firstItem="weu-eL-HFY" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="user" id="S1S-6g-bOz"/>
                             <constraint firstItem="weu-eL-HFY" firstAttribute="top" secondItem="3" secondAttribute="top" constant="20" symbolic="YES" type="default" id="Tbg-aM-9Jy"/>
+                            <constraint firstAttribute="trailing" secondItem="weu-eL-HFY" secondAttribute="trailing" constant="20" type="user" id="eBw-BY-dZS"/>
                             <constraint firstAttribute="bottom" secondItem="weu-eL-HFY" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="tks-cB-jr2"/>
                         </constraints>
                     </view>
@@ -61,6 +62,20 @@
             </objects>
         </scene>
     </scenes>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="PPLabel" superclassName="UILabel">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PPLabel.h"/>
+        </class>
+        <class className="ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="label" candidateClass="PPLabel"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
