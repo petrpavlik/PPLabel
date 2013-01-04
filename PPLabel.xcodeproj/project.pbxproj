@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B8AF3A21697515400520907 /* LinksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8AF3A11697515400520907 /* LinksViewController.m */; };
 		4B8D0D91168E2506009D3F22 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B8D0D90168E2506009D3F22 /* UIKit.framework */; };
 		4B8D0D93168E2506009D3F22 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B8D0D92168E2506009D3F22 /* Foundation.framework */; };
 		4B8D0D95168E2506009D3F22 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B8D0D94168E2506009D3F22 /* CoreGraphics.framework */; };
@@ -23,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B8AF3A01697515400520907 /* LinksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinksViewController.h; sourceTree = "<group>"; };
+		4B8AF3A11697515400520907 /* LinksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinksViewController.m; sourceTree = "<group>"; };
 		4B8D0D8C168E2506009D3F22 /* PPLabel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PPLabel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B8D0D90168E2506009D3F22 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4B8D0D92168E2506009D3F22 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -92,6 +95,8 @@
 			children = (
 				4B8D0DB3168E2557009D3F22 /* PPLabel.h */,
 				4B8D0DB4168E2557009D3F22 /* PPLabel.m */,
+				4B8AF3A01697515400520907 /* LinksViewController.h */,
+				4B8AF3A11697515400520907 /* LinksViewController.m */,
 				4B8D0D9F168E2506009D3F22 /* AppDelegate.h */,
 				4B8D0DA0168E2506009D3F22 /* AppDelegate.m */,
 				4B8D0DA8168E2506009D3F22 /* MainStoryboard.storyboard */,
@@ -186,6 +191,7 @@
 				4B8D0DA1168E2506009D3F22 /* AppDelegate.m in Sources */,
 				4B8D0DAD168E2506009D3F22 /* ViewController.m in Sources */,
 				4B8D0DB5168E2557009D3F22 /* PPLabel.m in Sources */,
+				4B8AF3A21697515400520907 /* LinksViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
