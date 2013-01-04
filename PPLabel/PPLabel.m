@@ -15,6 +15,26 @@
 
 @implementation PPLabel
 
+- (id)initWithFrame:(CGRect)frame {
+    
+    self = [super initWithFrame:frame];
+    if (self) {
+        
+        self.userInteractionEnabled = YES;
+    }
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        
+        self.userInteractionEnabled = YES;
+    }
+    return self;
+}
+
 - (CFIndex)characterIndexAtPoint:(CGPoint)point {
     
     ////////

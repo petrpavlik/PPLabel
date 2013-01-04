@@ -12,10 +12,14 @@ The advantage os this implementation is that it uses the ability of UILabel to d
 - Import Core Text framework into your project.
 - Have a look at the example project and enjoy PPLabel.
 
+## Examples
+
+![Screenshot from the example project](https://dl.dropbox.com/u/4175299/PPLabel.png)
+![Screenshot from the example project](https://dl.dropbox.com/u/4175299/PPlabel2.png)
+
 ## Usage
 
 The example project highlights touched words in a label. This behaviour can be modified to highlight touched links, hashtags or whatever you want.
-![Screenshot from the example project](https://dl.dropbox.com/u/4175299/PPLabel.png)
 
 ``` objective-c
 //
