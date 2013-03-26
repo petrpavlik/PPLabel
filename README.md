@@ -157,6 +157,7 @@ Many thanks to [Mattt Thomson](http://github.com/mattt) and his TTTAttributedLab
 
 ## Contact
 [@ptrpavlik](https://twitter.com/ptrpavlik)
+
 [petrpavlik](https://alpha.app.net/petrpavlik) on App.net
 
 petrpavlik@me.com
