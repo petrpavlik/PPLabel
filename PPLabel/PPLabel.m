@@ -41,7 +41,25 @@
     
     NSMutableAttributedString* optimizedAttributedText = [self.attributedText mutableCopy];
     
-    [self.attributedText enumerateAttribute:(NSString*)kCTParagraphStyleAttributeName inRange:NSMakeRange(0, [optimizedAttributedText length]) options:0 usingBlock:^(id value, NSRange range, BOOL *stop) {
+    // use label's font and lineBreakMode properties in case the attributedText does not contain such attributes
+    [self.attributedText enumerateAttributesInRange:NSMakeRange(0, [self.attributedText length]) options:0 usingBlock:^(NSDictionary *attrs, NSRange range, BOOL *stop) {
+        
+        if (!attrs[(NSString*)kCTFontAttributeName]) {
+            
+            [optimizedAttributedText addAttribute:(NSString*)kCTFontAttributeName value:self.font range:NSMakeRange(0, [self.attributedText length])];
+        }
+        
+        if (!attrs[(NSString*)kCTParagraphStyleAttributeName]) {
+            
+            NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+            [paragraphStyle setLineBreakMode:self.lineBreakMode];
+            
+            [optimizedAttributedText addAttribute:(NSString*)kCTParagraphStyleAttributeName value:paragraphStyle range:range];
+        }
+    }];
+    
+    // modify kCTLineBreakByTruncatingTail lineBreakMode to kCTLineBreakByWordWrapping
+    [optimizedAttributedText enumerateAttribute:(NSString*)kCTParagraphStyleAttributeName inRange:NSMakeRange(0, [optimizedAttributedText length]) options:0 usingBlock:^(id value, NSRange range, BOOL *stop) {
 
         NSMutableParagraphStyle* paragraphStyle = [value mutableCopy];
         
@@ -51,7 +69,6 @@
         
         [optimizedAttributedText removeAttribute:(NSString*)kCTParagraphStyleAttributeName range:range];
         [optimizedAttributedText addAttribute:(NSString*)kCTParagraphStyleAttributeName value:paragraphStyle range:range];
-        
     }];
     
     ////////
