@@ -78,7 +78,7 @@
         wordRange.length -= 1;
     }
     
-    if (wordRange.location == self.highlightedRange.location) {
+    if (wordRange.location == self.highlightedRange.location && wordRange.length == self.highlightedRange.length) {
         return; //this word is already highlighted
     }
     else {
