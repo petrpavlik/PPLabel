@@ -1,15 +1,31 @@
 # PPLabel
 ## UIlabel subclass with ability to detect touches on individual letters
 ---
-The advantage os this implementation is that it uses the ability of UILabel to display NSAttributedString on iOS 6.0+. There is no hacking of the drawRect: or drawText: method of UILabel.
+The advantage os this implementation is that it uses the ability of UILabel to display 
+NSAttributedString on iOS 6.0+. There is no hacking of the drawRect: or drawText: 
+method of UILabel. CoreText is used only to detect touched letters.
+
+### Why to use PPLabel
+- Draws text **exactly** the same way as UILabel
+- Dead simple implementation, look at the source code.
 
 **PPLabel requires iOS 6+**
 
 ## Getting Started
 
+### Cocoapods
+
+CocoaPods is the recommended way to add PPLabel to your project.
+
+* Add a pod entry for PPLabel to your Podfile pod 'PPLabel', '~> 0.5'
+* Install the pod(s) by running pod install.
+* Include PPLabel wherever you need it with #import <PPLabel.h>.
+
+### Source Files / Git Submodule
+
 - Obtain the last version of PPLabel from the master branch (or the dev branch if you dare).
-- Copy PPLabel.h and PPLabel.m into your project
-- Import Core Text framework into your project.
+- Add PPLabel.h and PPLabel.m into your project
+- Import CoreText framework into your project.
 - Have a look at the example project and enjoy PPLabel.
 
 ## Examples
@@ -67,26 +83,30 @@ The example project highlights touched words in a label. This behaviour can be m
     self.label.delegate = self;
 }
 
-#pragma mark --
+#pragma mark PPLabelDelegate
 
-- (void)label:(PPLabel *)label didBeginTouch:(UITouch *)touch onCharacterAtIndex:(CFIndex)charIndex {
+- (BOOL)label:(PPLabel *)label didBeginTouch:(UITouch *)touch onCharacterAtIndex:(CFIndex)charIndex {
     
     [self highlightWordContainingCharacterAtIndex:charIndex];
+    return NO;
 }
 
-- (void)label:(PPLabel *)label didMoveTouch:(UITouch *)touch onCharacterAtIndex:(CFIndex)charIndex {
+- (BOOL)label:(PPLabel *)label didMoveTouch:(UITouch *)touch onCharacterAtIndex:(CFIndex)charIndex {
     
     [self highlightWordContainingCharacterAtIndex:charIndex];
+    return NO;
 }
 
-- (void)label:(PPLabel *)label didEndTouch:(UITouch *)touch onCharacterAtIndex:(CFIndex)charIndex {
+- (BOOL)label:(PPLabel *)label didEndTouch:(UITouch *)touch onCharacterAtIndex:(CFIndex)charIndex {
     
     [self removeHighlight];
+    return NO;
 }
 
-- (void)label:(PPLabel *)label didCancelTouch:(UITouch *)touch {
+- (BOOL)label:(PPLabel *)label didCancelTouch:(UITouch *)touch {
     
     [self removeHighlight];
+    return NO; 
 }
 
 #pragma mark --
