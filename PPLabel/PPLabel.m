@@ -11,6 +11,8 @@
 
 @interface PPLabel ()
 
+@property(nonatomic, strong) NSSet* lastTouches;
+
 @end
 
 @implementation PPLabel
@@ -60,7 +62,7 @@
     
     // modify kCTLineBreakByTruncatingTail lineBreakMode to kCTLineBreakByWordWrapping
     [optimizedAttributedText enumerateAttribute:(NSString*)kCTParagraphStyleAttributeName inRange:NSMakeRange(0, [optimizedAttributedText length]) options:0 usingBlock:^(id value, NSRange range, BOOL *stop) {
-
+        
         NSMutableParagraphStyle* paragraphStyle = [value mutableCopy];
         
         if ([paragraphStyle lineBreakMode] == kCTLineBreakByTruncatingTail) {
@@ -177,42 +179,66 @@
 #pragma mark --
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-
+    
+    self.lastTouches = touches;
+    
     UITouch *touch = [touches anyObject];
     CFIndex index = [self characterIndexAtPoint:[touch locationInView:self]];
     
-    [self.delegate label:self didBeginTouch:touch onCharacterAtIndex:index];
-    
-    [super touchesBegan:touches withEvent:event];
+    if (![self.delegate label:self didBeginTouch:touch onCharacterAtIndex:index]) {
+        [super touchesBegan:touches withEvent:event];
+    }
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     
+    self.lastTouches = touches;
+    
     UITouch *touch = [touches anyObject];
     CFIndex index = [self characterIndexAtPoint:[touch locationInView:self]];
     
-    [self.delegate label:self didMoveTouch:touch onCharacterAtIndex:index];
-    
-    [super touchesMoved:touches withEvent:event];
+    if (![self.delegate label:self didMoveTouch:touch onCharacterAtIndex:index]) {
+        [super touchesMoved:touches withEvent:event];
+    }
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     
+    if (!self.lastTouches) {
+        return;
+    }
+    
+    self.lastTouches = nil;
+    
     UITouch *touch = [touches anyObject];
     CFIndex index = [self characterIndexAtPoint:[touch locationInView:self]];
     
-    [self.delegate label:self didEndTouch:touch onCharacterAtIndex:index];
-    
-    [super touchesEnded:touches withEvent:event];
+    if (![self.delegate label:self didEndTouch:touch onCharacterAtIndex:index]) {
+        [super touchesEnded:touches withEvent:event];
+    }
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
     
+    if (!self.lastTouches) {
+        return;
+    }
+    
+    self.lastTouches = nil;
+    
     UITouch *touch = [touches anyObject];
     
-    [self.delegate label:self didCancelTouch:touch];
+    if (![self.delegate label:self didCancelTouch:touch]) {
+        [super touchesCancelled:touches withEvent:event];
+    }
+}
+
+- (void)cancelCurrentTouch {
     
-    [super touchesCancelled:touches withEvent:event];
+    if (self.lastTouches) {
+        [self.delegate label:self didCancelTouch:[self.lastTouches anyObject]];
+        self.lastTouches = nil;
+    }
 }
 
 @end
