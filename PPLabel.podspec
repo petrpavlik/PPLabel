@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { 'Petr Pavlik' => 'petrpavlik@me.com' }
   s.source       = { :git => "https://github.com/petrpavlik/PPLabel", :tag => s.version.to_s }
-  s.platform     = :ios
+  s.platform     = :ios, '6.0'
   s.source_files = '*.{h,m}'
   s.framework    = "CoreText"
   s.requires_arc = true
