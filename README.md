@@ -23,7 +23,7 @@ CocoaPods is the recommended way to add PPLabel to your project.
 
 ### Source Files / Git Submodule
 
-- Obtain the last version of PPLabel from the master branch (or the dev branch if you dare).
+- Obtain the last version of PPLabel from the master branch.
 - Add PPLabel.h and PPLabel.m into your project
 - Import CoreText framework into your project.
 - Have a look at the example project and enjoy PPLabel.
