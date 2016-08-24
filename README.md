@@ -1,3 +1,5 @@
+**This code is depricated, please use https://github.com/TTTAttributedLabel/TTTAttributedLabel instead**
+
 # PPLabel
 ## UIlabel subclass with ability to detect touches on individual letters
 ---
